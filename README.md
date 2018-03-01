@@ -1,30 +1,29 @@
 # k8scluster.local
-Build private kubernetes cluster by Kops
-* private Hosted zone
+* Build private kubernetes cluster on AWS using Kops
+* private Hosted zone / DNS
 * Internal api cluster 
-* Private DNS zone 
 * NAT Gateway(s)
 
-# Create  IAM Instance  Role
+## Create  IAM Instance  Role
 * EC2 Full Access
 * S3 Full Access
 * IAM  Full Access 
 * Route53 Full Access
 
-#  Create VPC
+##  Create VPC
 * Services -> VPC ->  Your VPC -> Create VPC
 *  Make note of vpc-id  you need it later
 
-# Create Private Hosted Zone
+## Create Private Hosted Zone
 * Services ->  Route53 -> Hosted Zones
 * Create Hosted Zone 
-*     Domain Name : k8scluster.local
-*     Type : Private Hosted Zone for Amazon VPC
-#  VPC Settings 
+*	 Domain Name : k8scluster.local
+*	Type : Private Hosted Zone for Amazon VPC
+##  VPC Settings 
 * enableDnsHostnames
-*   Services -> VPC -> Select VPC -> Edit DNS Hostname : Yes : Save
+*	 Services -> VPC -> Select VPC -> Edit DNS Hostname : Yes : Save
 * enableDnsSupport
-*   Services -> VPC -> Select VPC -> Edit DNS Resolution : Yes: Save
+*	 Services -> VPC -> Select VPC -> Edit DNS Resolution : Yes: Save
 #  Launch EC2 Instance 
 *  Select IAM roles which was created in previous step while lauching this instance. 
 #  Login to EC2 Instance 
@@ -35,16 +34,17 @@ Build private kubernetes cluster by Kops
 * mv kops-linux-amd64 /usr/local/bin/kops
 # Create S3 Bucket 
 * Service -> S3 : Create Bucket 
-*  Name : <clustername>.k8scluster.local 
+*  Name : yourclustername.k8scluster.local 
 *  Enable version 
 *  Private 
 # State Store 
-* export KOPS_STATE_STORE=s3://<your s3 bucket>
+* export KOPS_STATE_STORE=s3://your-s3-bucket
 # Clone this repository and edit parameters 
-* git clone  <this repository> 
+* clone this repository
+* git clone
 * vi create-preview-script.sh 
 *  edit  all parameters below,  Kops can build those subnets for you or you can create subnets 
-*  if you choose to create subnets, make sure provide subnet-ids for each  subnets in config file 
+*  if you choose to create subnets, make sure provide subnet-ids for each  subnets in config.yaml file 
 * __CLUSTER__=
 * __DOMAIN__=k8scluster.local
 * __STATEBUCKET__=samsongudise.k8scluster.local
@@ -64,15 +64,15 @@ Build private kubernetes cluster by Kops
 *  __SHKEY__=id_rsa.pub
 * __IMAGE__=<centos_image>
 * __MYTPE__=t2.medium
-# Create ssh-key
+## Create ssh-key
 * ssh-keygen -t rsa -b 4096 -C "e-mail"
-# Create script to build Cluster
+## Create script to build Cluster
 *  create-preview-script.sh >  build-script.sh
 *  chmod +x build-script.sh
 *  sudo mv build-script.sh /usr/local/bin/
-# Time to Build Cluster 
+## Time to Build Cluster 
 * execute  /usr/local/bin/build-script.sh
 * verify preview run i
 * kops update cluster <clustername> --state=s3://<s3bucket>
-# Export config 
+## Export config 
 * kops export kubecfg --name=<cluster> --state=s3://s3bucket> 
