@@ -30,8 +30,8 @@
 * wget https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64
 * curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 * chmod +x kops-linux-amd64 kubectl
-* mv kops-linux-amd64 /usr/local/bin/kops
-* mv kubectl /usr/local/bin/kops
+* sudo mv kops-linux-amd64 /usr/local/bin/kops
+* sudo mv kubectl /usr/local/bin/
 # Create S3 Bucket 
 * Service -> S3 : Create Bucket 
 *  Name : your-clustername.k8scluster.local 
