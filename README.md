@@ -37,10 +37,10 @@
 *  Name : your-clustername.k8scluster.local 
 *  Enable versioning 
 *  No public access, make it private  
-*
+
 ## Create ssh-key
 * ssh-keygen -t rsa -b 4096 -C "e-mail"
-*
+
 # State Store 
 * export KOPS_STATE_STORE=s3://your-s3-bucket
 # Clone this repository and edit parameters 
@@ -85,5 +85,5 @@
 ## Export config 
 * kops export kubecfg --name=your-cluster-name --state=s3://s3bucket
 ## Source 
-*
+
 * https://kubernetes.io/docs/getting-started-guides/kops/
