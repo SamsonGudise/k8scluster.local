@@ -27,8 +27,8 @@
 #  Launch EC2 Instance 
 *  Select IAM roles which was created in previous step while lauching this instance. 
 #  Login to EC2 Instance 
-wget https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+* wget https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64
+* `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl`
 * chmod +x kops-linux-amd64 kubectl
 * sudo mv kops-linux-amd64 /usr/local/bin/kops
 * sudo mv kubectl /usr/local/bin/
