@@ -47,7 +47,7 @@
 * clone this repository
 * `git clone https://github.com/SamsonGudise/k8scluster.local.git`
 * `vi create-preview-script.sh `
-*  edit  all parameters below,  Kops can build those subnets for you or you can create subnets 
+*  edit parameters below,  Kops can build those subnets for you or you can create subnets 
 *  if you choose to create subnets, make sure provide subnet-ids for each  subnets in config.yaml file 
 * ` __CLUSTER__=your-clustername` 
 * ` __DOMAIN__=k8scluster.local `
@@ -67,7 +67,7 @@
 * ` __NODECOUNT__=2`
 * `  __SHKEY__=id_rsa.pub`
 * ` __IMAGE__=<centos_image>`
-  ` __MYTPE__=t2.medium`
+* ` __MYTPE__=t2.medium`
 ## Update configuraration parameters,  creates script to build cluster
 * `./create-preview-script.sh >  build-script.sh`
 * `chmod +x build-script.sh`
