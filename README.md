@@ -2,7 +2,7 @@
 * Build kubernetes cluster on AWS Private Hosted Zone  i.e., Local DNS 
 * This configuration allows you to build multi-master cluster, spread accross multiple availability zones
 * Customize your cluster! Choose Machine type, AMI, subnets and NAT gateway(s)
-* Default configuation comes with three masters, two node nodes.
+* Default configuation comes with three masters, two nodes.
 
 ## Create IAM Instance Role with
 * EC2 Full Access
@@ -12,12 +12,12 @@
 
 ##  Create VPC
 *  Services -> VPC -> Your VPC -> Create VPC
-*  Make note of vpc-id  you need it later
+*  Make note of vpc-id, you need it later
 
 ## Create Private Hosted Zone
 * Services ->  Route53 -> Hosted Zones
 * Create Hosted Zone 
-*	Domain Name : k8scluster.local
+*	Domain Name : k8scluster.local or your choice
 *	Type : Private Hosted Zone for Amazon VPC
 ##  VPC Settings 
 * enableDnsHostnames
@@ -28,6 +28,7 @@
 *  Select IAM roles which was created in previous step while lauching this instance. 
 #  Login to EC2 Instance 
 * wget https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64
+* curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 * chmod +x kops-linux-amd64
 * mv kops-linux-amd64 /usr/local/bin/kops
 # Create S3 Bucket 
@@ -82,3 +83,6 @@
 * kops update cluster your-cluster-name --state=s3://s3bucket --yes
 ## Export config 
 * kops export kubecfg --name=your-cluster-name --state=s3://s3bucket
+## Source 
+*
+* https://kubernetes.io/docs/getting-started-guides/kops/
