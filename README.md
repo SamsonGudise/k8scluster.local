@@ -49,9 +49,9 @@
 * vi create-preview-script.sh 
 *  edit  all parameters below,  Kops can build those subnets for you or you can create subnets 
 *  if you choose to create subnets, make sure provide subnet-ids for each  subnets in config.yaml file 
-* __CLUSTER__=
+* __CLUSTER__=your-clustername
 * __DOMAIN__=k8scluster.local
-* __STATEBUCKET__=samsongudise.k8scluster.local
+* __STATEBUCKET__=your-clustername.k8scluster.local
 * __PRIVATESUBNETA__=10.0.0.0/24
 * __PRIVATESUBNETB__=10.0.1.0/24
 * __PRIVATESUBNETC__=10.0.2.0/24
@@ -69,21 +69,21 @@
 * __IMAGE__=<centos_image>
 * __MYTPE__=t2.medium
 ## Update configuraration parameters,  creates script to build cluster
-*  create-preview-script.sh >  build-script.sh
+*  ./create-preview-script.sh >  build-script.sh
 *  chmod +x build-script.sh
 *  sudo mv build-script.sh /usr/local/bin/
 ## Time to build cluster 
 * execute  /usr/local/bin/build-script.sh
-* verify preview.  Take your time to read and understand entire preview.
-* It is your opportunity understand cluster. Such as 
-* How many Autoscaling groups are being create
+* verify preview.  Take your time to read and understand preview.
+* It is your opportunity to understand your cluster, such as
+* How many autoscaling groups are being created
 * Does it use Elastic Loadbalancer and how they are being used
-* Public Private Subnets and NAT Gateways
-* How many etcd volumes are created, where are they attached and why?  
+* How many public, private subnets and NAT Gateways
+* How many etcd volumes are created, hosts attached and why?  
 * run update script with --yes at the end
-* kops update cluster your-cluster-name --state=s3://s3bucket --yes
+* kops update cluster your-clustername.k8scluster.local --state=s3://your-s3bucket --yes
 ## Export config 
-* kops export kubecfg --name=your-cluster-name --state=s3://s3bucket
+* kops export kubecfg --name=your-clustername --state=s3://your-s3bucket
 ## Source 
 
 * https://kubernetes.io/docs/getting-started-guides/kops/
