@@ -49,25 +49,25 @@
 * `vi create-preview-script.sh `
 *  edit  all parameters below,  Kops can build those subnets for you or you can create subnets 
 *  if you choose to create subnets, make sure provide subnet-ids for each  subnets in config.yaml file 
-*` __CLUSTER__=your-clustername` 
-*` __DOMAIN__=k8scluster.local `
-*` __STATEBUCKET__=your-clustername.k8scluster.local`
-*` __PRIVATESUBNETA__=10.0.0.0/24`
-*` __PRIVATESUBNETB__=10.0.1.0/24`
-*` __PRIVATESUBNETC__=10.0.2.0/24`
-*` __REGION__=us-west-2`
-*` __VPCCIDR__=10.0.0.0/16`
-*` __VPCID__=`
-*` __VERSION__=`
-*` __SSHWHITELIST__=0.0.0.0/0`
-*` __APIWHITELIST__=0.0.0.0/0`
-*` __PUBLICSUBNETA__=10.0.3.0/24`
-*` __PUBLICSUBNETB__=10.0.4.0/24`
-*` __PUBLICSUBNETC__=10.0.5.0/24`
-*` __NODECOUNT__=2`
-*`  __SHKEY__=id_rsa.pub`
-*` __IMAGE__=<centos_image>`
-*` __MYTPE__=t2.medium`
+* ` __CLUSTER__=your-clustername` 
+* ` __DOMAIN__=k8scluster.local `
+* ` __STATEBUCKET__=your-clustername.k8scluster.local`
+* ` __PRIVATESUBNETA__=10.0.0.0/24`
+* ` __PRIVATESUBNETB__=10.0.1.0/24`
+* ` __PRIVATESUBNETC__=10.0.2.0/24`
+* ` __REGION__=us-west-2`
+* ` __VPCCIDR__=10.0.0.0/16`
+* ` __VPCID__=`
+* ` __VERSION__=`
+* ` __SSHWHITELIST__=0.0.0.0/0`
+* ` __APIWHITELIST__=0.0.0.0/0`
+* ` __PUBLICSUBNETA__=10.0.3.0/24`
+* ` __PUBLICSUBNETB__=10.0.4.0/24`
+* ` __PUBLICSUBNETC__=10.0.5.0/24`
+* ` __NODECOUNT__=2`
+* `  __SHKEY__=id_rsa.pub`
+* ` __IMAGE__=<centos_image>`
+  ` __MYTPE__=t2.medium`
 ## Update configuraration parameters,  creates script to build cluster
 * `./create-preview-script.sh >  build-script.sh`
 * `chmod +x build-script.sh`
