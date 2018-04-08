@@ -1,8 +1,8 @@
 # k8scluster.local
 * Build kubernetes cluster on AWS Private Hosted Zone  i.e., Local DNS 
-* This configuration allows you to build multi-master cluster, spread accross multiple availability zones
+* This configuration allows you to build multi-master cluster, spread across multiple availability zones
 * Customize your cluster! Choose Machine type, AMI, subnets and NAT gateway(s)
-* Default configuation comes with three masters, two nodes.
+* Default configuration comes with three masters, two nodes.
 
 ## Create IAM Instance Role with
 * EC2 Full Access
@@ -25,7 +25,7 @@
 * enableDnsSupport
 *	 Services -> VPC -> Select VPC -> Edit DNS Resolution : Yes: Save
 #  Launch EC2 Instance 
-*  Select IAM roles which was created in previous step while lauching this instance. 
+*  Select IAM roles which was created in previous step while launching this instance. 
 #  Login to EC2 Instance 
 * `wget https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64`
 * `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl`
@@ -68,7 +68,7 @@
 * `  __SHKEY__=id_rsa.pub`
 * ` __IMAGE__=<centos_image>`
 * ` __MYTPE__=t2.medium`
-## Update configuraration parameters,  creates script to build cluster
+## Update configuration parameters,  creates script to build cluster
 * `./create-preview-script.sh >  build-script.sh`
 * `chmod +x build-script.sh`
 * `sudo mv build-script.sh /usr/local/bin/`
