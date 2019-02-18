@@ -1,0 +1,78 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  name: tekgs.k8scluster.local
+spec:
+  api:
+    loadBalancer:
+      type: Internal
+  authorization:
+    alwaysAllow: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://tekgs.k8scluster.local/tekgs.k8scluster.local
+  dnsZone: k8scluster.local
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master-us-east-1a
+      name: a
+    - instanceGroup: master-us-east-1b
+      name: b
+    - instanceGroup: master-us-east-1c
+      name: c
+    name: main
+  - etcdMembers:
+    - instanceGroup: master-us-east-1a
+      name: a
+    - instanceGroup: master-us-east-1b
+      name: b
+    - instanceGroup: master-us-east-1c
+      name: c
+    name: events 
+  kubernetesApiAccess:
+   - 0.0.0.0/0
+  kubernetesVersion: 
+  masterInternalName: api.internal-tekgs.k8scluster.local
+  masterPublicName: api-tekgs.k8scluster.local
+  networkCIDR: 10.16.96.0/20
+  networkID: vpc-06a9c4a290bf59d6a
+  networking:
+    weave: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+     - 0.0.0.0/0
+  subnets:   
+  - cidr: 10.16.96.0/24
+    name: Service-app-a
+    type: private
+    zone: us-east-1a
+    id: subnet-
+  - cidr: 10.16.97.0/24
+    name: Service-app-b
+    type: private
+    zone: us-east-1b
+    id: subnet-
+  - cidr: 10.16.98.0/24
+    name: Service-app-c
+    type: private
+    zone: us-east-1c
+    id: subnet-
+  - cidr: 10.16.96.99/24
+    name: Service-web-a
+    type: public
+    zone: us-east-1a
+    id: subnet-
+  - cidr: 10.16.96.100/24
+    name: Service-web-b
+    type: public
+    zone: us-east-1b
+  - cidr: 10.16.96.101/24
+    name: Service-web-c
+    type: public
+    zone: us-east-1c
+    id: subnet-
+  topology:
+    dns:
+      type: Private
+    masters: private
+    nodes: private

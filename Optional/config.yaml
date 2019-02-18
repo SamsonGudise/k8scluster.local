@@ -1,0 +1,79 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  name: __CLUSTER__.__DOMAIN__
+spec:
+  api:
+    loadBalancer:
+      type: Internal
+  authorization:
+    alwaysAllow: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://__STATE_BUCKET__/__CLUSTER__.__DOMAIN__
+  dnsZone: __DOMAIN__
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master-__REGION__a
+      name: a
+    - instanceGroup: master-__REGION__b
+      name: b
+    - instanceGroup: master-__REGION__c
+      name: c
+    name: main
+  - etcdMembers:
+    - instanceGroup: master-__REGION__a
+      name: a
+    - instanceGroup: master-__REGION__b
+      name: b
+    - instanceGroup: master-__REGION__c
+      name: c
+    name: events 
+  kubernetesApiAccess:
+   - __APIWHITELIST__
+  kubernetesVersion: __VERSION__
+  masterInternalName: api.internal-__CLUSTER__.__DOMAIN__
+  masterPublicName: api-__CLUSTER__.__DOMAIN__
+  networkCIDR: __VPCCIDR__
+  networkID: __VPCID__
+  networking:
+    weave: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+     - __SSHWHITELIST__
+  subnets:   
+  - cidr: __PRIVATESUBNETA__
+    name: __REGION__a
+    type: Private
+    zone: __REGION__a
+    id: subnet-
+  - cidr: __PRIVATESUBNETB__
+    name: __REGION__b
+    type: Private
+    zone: __REGION__b
+    id: subnet-
+  - cidr: __PRIVATESUBNETC__
+    name: __REGION__c
+    type: Private
+    zone: __REGION__c
+    id: subnet-
+  - cidr: __PUBLICSUBNETA__
+    name: utility-__REGION__a
+    type: Utility
+    zone: __REGION__a
+    id: subnet-
+  - cidr: __PUBLICSUBNETB__
+    name: utility-__REGION__b
+    type: Utility
+    zone: __REGION__b
+    id: subnet-
+  - cidr: __PUBLICSUBNETC__
+    name: utility-__REGION__c
+    type: Utility
+    zone: __REGION__c
+    id: subnet-
+  topology:
+    dns:
+      type: Private
+    masters: private
+    nodes: private
