@@ -46,26 +46,32 @@ spec:
     name: __REGION__a
     type: Private
     zone: __REGION__a
+  __PRIVATESUBNETIDA__
   - cidr: __PRIVATESUBNETB__
     name: __REGION__b
     type: Private
     zone: __REGION__b
+  __PRIVATESUBNETIDB__
   - cidr: __PRIVATESUBNETC__
     name: __REGION__c
     type: Private
     zone: __REGION__c
+  __PRIVATESUBNETIDC__
   - cidr: __PUBLICSUBNETA__
     name: utility-__REGION__a
     type: Utility
     zone: __REGION__a
+  __PUBLICSUBNETIDA__
   - cidr: __PUBLICSUBNETB__
     name: utility-__REGION__b
     type: Utility
     zone: __REGION__b
+  __PUBLICSUBNETIDB__
   - cidr: __PUBLICSUBNETC__
     name: utility-__REGION__c
     type: Utility
     zone: __REGION__c
+  __PUBLICSUBNETIDC__
   topology:
     dns:
       type: Private
